@@ -4,6 +4,7 @@ class Song
   @@artists = []
   @@genres = []
 
+
   attr_accessor :name, :artist, :genre
 
   def initialize(name, artist, genre)
@@ -16,11 +17,44 @@ class Song
     @genre = genre
   end
 
-  def count
+  def self.count
     @@count
   end
 
-  def genres
+  def self.artists
+    @@artists.uniq
+  end
+
+  def self.genres
+    @@genres.uniq
+  end
+
+  def self.genre_count
+    genre_hash = Hash.new(0)
+    @@genres.each do |g|
+      genre_hash[g] += 1
+    end
+    return genre_hash
+  end
+
+  def self.artist_count
+    artist_hash = Hash.new(0)
+    @@artists.each do |a|
+      artist_hash[a] += 1
+    end
+    return artist_hash
+  end
+
+  def name
+    @name
+  end
+
+  def artist
+    @artist
+  end
+
+  def genre
+    @genre
   end
 
 
